@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reset Data</title>
+</head>
+<body>
+<h1>Reset Data</h1>
+<button id="resetButton">Reset styT Data</button>
+<script>
+document.getElementById('resetButton').addEventListener('click', function() {
+      const styTData = {
+        balance: 0,
+        lastClick: null,
+      };
+      localStorage.setItem('styT', JSON.stringify(styTData));
+      alert('styT data has been reset!');
+    });
+  </script>
+</body>
+</html>

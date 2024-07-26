@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input Form</title>
+</head>
+<body>
+<form id="input-form">
+<label for="linkurl">linkurl</label>
+<input type="text" id="linkurl" placeholder="linkurl" />
+<label for="linkimage">linkimage</label>
+<input type="text" id="linkimage" placeholder="linkimage" />
+<label for="boximage">boximage</label>
+<input type="text" id="boximage" placeholder="boximage" />
+<label for="linktext">linktext</label>
+<input type="text" id="linktext" placeholder="linktext" />
+<button type="submit">Generate Output</button>
+</form>
+<textarea id="output" rows="10" cols="50" readonly></textarea>
+<script>
+document.getElementById('input-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const linkurl = document.getElementById('linkurl').value;
+      const linkimage = document.getElementById('linkimage').value;
+      const boximage = document.getElementById('boximage').value;
+      const linktext = document.getElementById('linktext').value;
+
+      const jsonObject = {
+        "linkurl": linkurl,
+        "linkimage": linkimage,
+        "boximage": boximage,
+        "linktext": linktext
+      };
+
+      const jsonOutput = JSON.stringify([jsonObject], null, 2);
+
+      document.getElementById('output').value = jsonOutput;
+    });
+  </script>
+</body>
+</html>

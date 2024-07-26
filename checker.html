@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+<title>Hello, World!</title>
+</head>
+<body>
+<h1>
+Hello, World!
+  </h1>
+<script>
+// Check if 'styT' exists in localStorage
+    if (localStorage.getItem('styT')) {
+      // Retrieve 'styT' data from localStorage
+      const styTData = JSON.parse(localStorage.getItem('styT'));
+
+      // Log 'styT' data to console
+      console.log(styTData);
+    } else {
+      // Log message if 'styT' is not found in localStorage
+      console.log('styT not found in localStorage.');
+    }
+  </script>
+</body>
+</html>

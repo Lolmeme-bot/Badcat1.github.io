@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Delete Data</title>
+</head>
+<body>
+<h1>Delete Data</h1>
+<button id="deleteButton">Delete styT Data</button>
+<script>
+document.getElementById('deleteButton').addEventListener('click', function() {
+      localStorage.removeItem('styT');
+      alert('styT data has been deleted!');
+    });
+  </script>
+</body>
+</html>
+  

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+  }
+
+  #box-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    background-color: white;
+    color: black;
+    margin: 5px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .boximg {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;}
+    .boxx{
+      display:block ;
+      margin-right:auto;
+      margin-left:auto;
+      width:300px;
+  }
+  #txt{
+    text-align:center;
+  }
+</style>
+
+</head>
+<body>
+  <img src="52fb1e15-3db4-4f7b-9eb4-2474a03c9121.jpg" class="boxx">
+  <b> <p id="txt">“People keep asking if I’m back. And I haven’t really had an answer. But now, yeah, I’m thinkin’ I’m back!” ~catwick</p></b>
+  
+<div id="box-container"></div>
+<script>
+// Fetch data from tlink.json
+    fetch('tlink.json')
+      .then(response => response.json())
+      .then(data => {
+        // Create the box-container element
+        const boxContainer = document.getElementById('box-container');
+
+        // Iterate over the data and create boxes
+        data.forEach(({ linkurl, linkimage, boximage, linktext }) => {
+          const box = document.createElement('div');
+          box.innerHTML = `
+            <a href="${linkurl}">
+              <div class="box">
+                <img class="boximg" src="${linkimage}">
+                <b><p>${linktext}</p></b>
+                <button>go</button>
+              </div>
+            </a>
+          `;
+
+          // Append the box to the container
+          boxContainer.appendChild(box);
+        });
+      })
+  </script>
+</body>
+</html>

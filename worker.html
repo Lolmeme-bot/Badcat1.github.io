@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+<title>Hello, World!</title>
+<style>
+body {
+      font-size: 15pt;
+      background-color: black;
+      color: white;
+    }
+
+    #signup-form {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: black;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<h1>Cat are always the baddest</h1>
+<div id="signup-form">
+<h3>Sign Up</h3>
+<form action="/signup" method="post">
+<label for="username">Username:</label>
+<input type="text" id="username" name="username" required>
+<label for="user-email">Your Email:</label>
+<input type="email" id="user-email" name="user-email" required>
+<label for="invitee-email">Invitee's Email:</label>
+<input type="email" id="invitee-email" name="invitee-email" required>
+<input type="submit" value="Sign Up">
+</form>
+</div>
+<script>
+document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const userEmail = document.getElementById('user-email').value;
+      const inviteeEmail = document.getElementById('invitee-email').value;
+
+      const data = {
+        username: username,
+        userEmail: userEmail,
+        inviteeEmail: inviteeEmail,
+        balance: '500',
+        startDay: 'not',
+        startTime: 'not',
+        startClick: 'no',
+      };
+
+      const jsonData = JSON.stringify(data);
+      localStorage.setItem('styT', jsonData);
+      document.querySelector('form').reset();
+      window.location.href = 'home.html';
+    });
+  </script>
+</body>
+</html>
