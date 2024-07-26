@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<style>
+body{
+      background: black ;
+    }
+    #balance{
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      text-align: center;
+      color: white ;
+    }
+    #cimg{
+      width:300px;
+      height: 250px;
+      display: block;
+      margin-right: auto;
+      margin-left: auto ;
+      border-radius: 50%;
+    }
+    .white{
+      color : black;
+      background :white;
+      border-radius: 20px;
+    }
+    #startfarming{
+      border-radius: 20px;
+      padding-top: 20px;
+      background-color: white ;
+      text-align: center;
+      width=300px;
+      height: 40px;
+      cursor: pointer;
+    }
+    .menu{
+      background-color: white ;
+      width:112px;
+      height:40px;
+      margin: 0px;
+      border: solid white 1px;
+      border-radius: 10px;
+    }
+  </style>
+<script>
+window.onload = function() {
+  const styTData = JSON.parse(localStorage.getItem('styT'));
+  if (styTData) {
+    const balance = styTData.balance;
+    document.getElementById('balance').textContent = '$' + balance;
+  }
+
+  document.getElementById('startfarming').addEventListener('click', function() {
+    const styTData = JSON.parse(localStorage.getItem('styT'));
+    const lastClick = styTData.lastClick;
+    let lastClickTime = lastClick ? parseInt(lastClick) : 0;
+    const currentTime = Math.floor(Date.now() / 1000);
+
+    if (currentTime - lastClickTime >= 3 * 60 * 60) {
+      const newBalance = parseInt(styTData.balance) + 1000;
+      styTData.balance = newBalance;
+      document.getElementById('balance').textContent = '$' + newBalance;
+      localStorage.setItem('styT', JSON.stringify(styTData));
+    } else {
+      alert('Wait till three hours have passed');
+    }
+
+    styTData.lastClick = currentTime;
+    localStorage.setItem('styT', JSON.stringify(styTData));
+  });
+}
+</script>
+
+</head>
+<body>
+<h1 id="balance" class="middle"></h1>
+<br1><br>
+<img id="cimg" src="1721394683212.jpg" alt="cat image">
+<b><h4 id="startfarming">start farming</h4></b>
+<br><br><br><br><br><br><br><br>
+<div>
+<a href="home.html"><button class="menu">home</button></a>
+<a href="task.html"><button class="menu">task</button></a>
+<a href="invite.html"><button class="menu">invite</button></a>
+</div>
+</body>
